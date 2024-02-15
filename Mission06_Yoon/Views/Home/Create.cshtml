@@ -1,0 +1,59 @@
+﻿@{
+}
+@model AddingMovie
+
+<div class="form-container">
+    <h1 class="h1-general">Add a Movie</h1>
+    <form method="post" class="form-general">
+        <div class="form-group">
+            <label asp-for="Category" class="form-label">Category:</label>
+            <input asp-for="Category" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Title" class="form-label">Title:</label>
+            <input asp-for="Title" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Year" class="form-label">Year:</label>
+            <input asp-for="Year" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Director" class="form-label">Director:</label>
+            <input asp-for="Director" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Rating" class="form-label">Rating:</label>
+            <select asp-for="Rating" required class="form-control">
+                <option value="">Choose...</option>
+                <option>G</option>
+                <option>PG</option>
+                <option>PG-13</option>
+                <option>R</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Edited" class="form-label">Edited:</label>
+            <select asp-for="Edited" class="form-control">
+                <option value="False">No</option>
+                <option value="True">Yes</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Lent_To" class="form-label">Lent To:</label>
+            <input asp-for="Lent_To" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Notes" class="form-label">Notes:</label>
+            <input asp-for="Notes" maxlength="25" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn-primary">Submit to Add a Movie</button>
+    </form>
+</div>
