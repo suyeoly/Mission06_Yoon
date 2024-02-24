@@ -10,6 +10,6 @@
 <h2>@Model.Title, @Model.Year</h2>
 <form method="post">
     <input type="hidden" asp-for="MovieId" />
-    <button type="submit">Delete</button>
-    <a class="btn btn-info" asp-controller="Home" asp-action="MovieList">Cancel</a>
+    <button type="submit" class="btn btn-danger custom-btn">Delete</button>
+    <button class="btn btn-info custom-btn" asp-controller="Home" asp-action="MovieList">Cancel</button>
 </form>

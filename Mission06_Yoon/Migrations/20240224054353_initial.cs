@@ -13,64 +13,62 @@ namespace Mission06_Yoon.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CategoryTable",
+                name: "Categories",
                 columns: table => new
                 {
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Category = table.Column<string>(type: "TEXT", nullable: true)
+                    Category = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryTable", x => x.CategoryId);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MoviesAdded",
+                name: "Movies",
                 columns: table => new
                 {
                     MovieId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Year = table.Column<int>(type: "INTEGER", nullable: false),
-                    Director = table.Column<string>(type: "TEXT", nullable: false),
-                    Rating = table.Column<string>(type: "TEXT", nullable: false),
+                    Director = table.Column<string>(type: "TEXT", nullable: true),
+                    Rating = table.Column<string>(type: "TEXT", nullable: true),
                     Edited = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Lent_To = table.Column<string>(type: "TEXT", nullable: true),
+                    LentTo = table.Column<string>(type: "TEXT", nullable: true),
                     CopiedToPlex = table.Column<bool>(type: "INTEGER", nullable: false),
                     Notes = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MoviesAdded", x => x.MovieId);
+                    table.PrimaryKey("PK_Movies", x => x.MovieId);
                     table.ForeignKey(
-                        name: "FK_MoviesAdded_CategoryTable_CategoryId",
+                        name: "FK_Movies_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "CategoryTable",
-                        principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId");
                 });
 
             migrationBuilder.InsertData(
-                table: "CategoryTable",
+                table: "Categories",
                 columns: new[] { "CategoryId", "Category" },
                 values: new object[,]
                 {
                     { 1, "Miscellaneous" },
                     { 2, "Drama" },
-                    { 3, "Magic" },
-                    { 4, "Television" },
-                    { 5, "Horror/Suspense" },
-                    { 6, "Comedy" },
-                    { 7, "Family" },
-                    { 8, "Action/Adventure" },
-                    { 9, "VHS" }
+                    { 3, "Television" },
+                    { 4, "Horror/Suspense" },
+                    { 5, "Comedy" },
+                    { 6, "Family" },
+                    { 7, "Action/Adventure" },
+                    { 8, "VHS" }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_MoviesAdded_CategoryId",
-                table: "MoviesAdded",
+                name: "IX_Movies_CategoryId",
+                table: "Movies",
                 column: "CategoryId");
         }
 
@@ -78,10 +76,10 @@ namespace Mission06_Yoon.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MoviesAdded");
+                name: "Movies");
 
             migrationBuilder.DropTable(
-                name: "CategoryTable");
+                name: "Categories");
         }
     }
 }

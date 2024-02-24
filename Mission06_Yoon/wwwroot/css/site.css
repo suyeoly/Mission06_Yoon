@@ -132,3 +132,9 @@ button[type="submit"] {
     button[type="submit"]:hover {
         background-color: #106ba3;
     }
+
+.custom-btn {
+    width: 100px;
+    height: 40px;
+}
+
